@@ -6,10 +6,11 @@ import 'package:flutter/material.dart';
 import '../../../../Core/utils/constants.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../home/presentation/widgets/custom_home_container.dart';
-class ExamsScreenBody extends StatelessWidget {
-  const ExamsScreenBody({super.key, required this.subjectStudent, required this.teacherName, required this.totalDegree, required this.degreeStudent});
+class ReviewsScreenBody extends StatelessWidget {
+  const ReviewsScreenBody({super.key, required this.status, required this.points, required this.balance, required this.totalPoints, required this.rankClass, required this.subject, required this.date, required this.teacherName});
 
-  final String subjectStudent,teacherName,totalDegree,degreeStudent;  @override
+  final String status,points,balance,totalPoints,rankClass,subject,date,teacherName;
+  @override
   Widget build(BuildContext context) {
     var listColor = [kChildrenContainerColor1, kChildrenContainerColor2];
     final _random = Random();
@@ -61,7 +62,7 @@ body: Column(
         padding: const EdgeInsets.only(right: 16,left: 16),
         child:CustomHomeContainer(
           color:  listColor[_random.nextInt(listColor.length)],
-          height: context.screenHeight*0.22,
+          height: context.screenHeight*0.33,
           width: context.screenWidth * 0.9,
           child:
           Padding(
@@ -69,12 +70,123 @@ body: Column(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      subjectStudent,
+                      status,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.028,
+
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: context.screenWidth * .009,
+                    ),
+                    Text(
+                      ": حالة الطالب ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: context.screenHeight*0.011,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    Text(
+                      "($points) ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.028,
+
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: context.screenWidth * .009,
+                    ),
+                    Text(
+                      ": النقاط  ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: context.screenHeight*0.011,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    Text(
+                      "($balance) ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.028,
+
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: context.screenWidth * .009,
+                    ),
+                    Text(
+                      " :  رصد العقوبات اصبح",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: context.screenHeight*0.011,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    Text(
+                      "($totalPoints) ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.028,
+
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: context.screenWidth * .009,
+                    ),
+                    Text(
+                      " : الرصيد الاجمالي  ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: context.screenHeight*0.011,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    Text(
+                      "($rankClass) ",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.028,
@@ -85,7 +197,7 @@ body: Column(
                     SizedBox(
                       width: context.screenWidth * .009,
                     ),Text(
-                      " : المواد الدراسية ",
+                      " : الترتيب علي الفصل  ",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.03,
@@ -100,7 +212,7 @@ body: Column(
 
                   children: [
                     Text(
-                      teacherName,
+                      "اللغة الانجليزية",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.028,
@@ -112,7 +224,7 @@ body: Column(
                       width: context.screenWidth * .009,
                     ),
                     Text(
-                      " : اسم المدرس",
+                      " : $subject",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.03,
@@ -127,7 +239,34 @@ body: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      totalDegree,
+                      "$teacherName",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.028,
+
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: context.screenWidth * .009,
+                    ),
+                    Text(
+                      " : اسم مدرس المادة ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: context.screenWidth*0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: context.screenHeight*0.011,),
+                Row(                mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    Text(
+                      "$date ",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.028,
@@ -138,7 +277,7 @@ body: Column(
                     SizedBox(
                       width: context.screenWidth * .009,
                     ), Text(
-                      " : مجموع الدرجات",
+                      ":  التاريخ ",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: context.screenWidth*0.03,
@@ -148,34 +287,6 @@ body: Column(
 
                   ],
                 ),
-                SizedBox(height: context.screenHeight*0.011,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      degreeStudent,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.028,
-
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.screenWidth * .009,
-                    ),Text(
-                      " : درجة الطالب  ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.03,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                  ],
-                ),
-
-
 
               ],
             ),

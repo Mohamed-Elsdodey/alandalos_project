@@ -1,20 +1,20 @@
-import 'package:alandalos_project/Features/exams_details/data-source/data-source.dart';
-import 'package:alandalos_project/Features/exams_details/model/examDetailsModel.dart';
+import 'package:alandalos_project/Features/review_details/data-source/data-source.dart';
 import 'package:bloc/bloc.dart';
-import 'exams_details_state.dart';
+import '../../model/reviewDetailsModel.dart';
+import 'reviews_details_state.dart';
 
-class GetExamsDetailsCubit extends Cubit<GetExamsDetailsState> {
-  GetExamsDetailsCubit(this.getExamsDetails) : super(GetExamsDetailsInitial());
-  final GetExamsDetails getExamsDetails;
-  Future<void> getAllDataExamsDetails(String parentId,String examsId) async {
-    ExamDetailsModel data;
-    data = await getExamsDetails.getExamsDataDetails(parentId,examsId);
+class GetReviewsDetailsCubit extends Cubit<GetReviewsDetailsState> {
+  GetReviewsDetailsCubit(this.getReviewsDetails) : super(GetReviewsDetailsInitial());
+  final GetReviewsDetails getReviewsDetails;
+  Future<void> getAllDataReviewsDetails(String parentId,String ReviewsId) async {
+    ReviewDetailsModel data;
+    data = await getReviewsDetails.getReviewsDataDetails(parentId,ReviewsId);
     if(data.status == 200)
     {
-      emit(FeaturedRepositorySuccessExamsDetails(data));
+      emit(FeaturedRepositorySuccessReviewsDetails(data));
     }
     else {
-      emit(FeaturedRepositoryFailureExamsDetails(data.message!));
+      emit(FeaturedRepositoryFailureReviewsDetails(data.message!));
 
     }
   }

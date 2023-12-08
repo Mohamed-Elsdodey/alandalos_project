@@ -139,7 +139,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  ReviewsTabScreen(data: state.dataInfo),
+                          builder: (context) =>  ReviewsTabScreen(data: state.dataInfo,parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureReviews) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

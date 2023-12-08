@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../Core/utils/constants.dart';
 class ReviewListWidgets extends StatefulWidget {
-  const ReviewListWidgets({super.key, required this.data});
+  const ReviewListWidgets({super.key, required this.data, required this.parentId});
   final ReviewsModel data;
+  final String parentId;
   @override
   State<ReviewListWidgets> createState() => _ReviewListWidgetsState();
 }
@@ -22,6 +23,8 @@ class _ReviewListWidgetsState extends State<ReviewListWidgets> {
       itemCount: widget.data.data!.length,
       itemBuilder: (context, index) {
         return ReviewListView(
+          parentId: widget.parentId,
+          ReviewsId: widget.data.data![index].id.toString(),
           status: widget.data.data![index].type.toString(),
           date: widget.data.data![index].date.toString(),
           balance: widget.data.data![index].balance.toString(),

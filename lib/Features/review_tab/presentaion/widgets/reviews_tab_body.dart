@@ -6,8 +6,9 @@ import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
 
 class ReviewsTabBody extends StatelessWidget {
-  const ReviewsTabBody({super.key, required this.data});
+  const ReviewsTabBody({super.key, required this.data, required this.parentId});
 final ReviewsModel data;
+final String parentId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,19 +54,19 @@ final ReviewsModel data;
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 5,
                   left: 5,
                 ),
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           right:  5,
                           left:  5 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child:  ReviewListWidgets(data: data),
+                        child:  ReviewListWidgets(data: data,parentId: parentId),
                       ),
                     ),
                   ],

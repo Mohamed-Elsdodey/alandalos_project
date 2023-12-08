@@ -1,21 +1,22 @@
 
 
 
-import 'package:alandalos_project/Features/exams_details/model/examDetailsModel.dart';
 
-abstract class GetExamsDetailsState {}
+import '../../model/reviewDetailsModel.dart';
 
-class GetExamsDetailsInitial extends GetExamsDetailsState {}
-class FeaturedRepositoryFailureExamsDetails extends GetExamsDetailsState {
+abstract class GetReviewsDetailsState {}
+
+class GetReviewsDetailsInitial extends GetReviewsDetailsState {}
+class FeaturedRepositoryFailureReviewsDetails extends GetReviewsDetailsState {
   final List<String>? errMessage;
 
-  FeaturedRepositoryFailureExamsDetails(this.errMessage);
+  FeaturedRepositoryFailureReviewsDetails(this.errMessage);
 }
-class FeaturedRepositorySuccessExamsDetails extends GetExamsDetailsState {
-  final ExamDetailsModel dataInfo;
-  FeaturedRepositorySuccessExamsDetails(this.dataInfo);
+class FeaturedRepositorySuccessReviewsDetails extends GetReviewsDetailsState {
+  final ReviewDetailsModel dataInfo;
+  FeaturedRepositorySuccessReviewsDetails(this.dataInfo);
 }
-class FeaturedRepositoryLoadingExamsDetails extends GetExamsDetailsState {
+class FeaturedRepositoryLoadingReviewsDetails extends GetReviewsDetailsState {
 
 
 }

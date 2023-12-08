@@ -4,6 +4,8 @@ import 'package:alandalos_project/Features/absence_details/presentaion/manager/a
 import 'package:alandalos_project/Features/auth/login_screen/presentaion/login_screen.dart';
 import 'package:alandalos_project/Features/auth/login_screen/presentaion/manager/login_cubit.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_cubit.dart';
+import 'package:alandalos_project/Features/review_details/data-source/data-source.dart';
+import 'package:alandalos_project/Features/review_details/presentaion/manager/reviews_details_cubit.dart';
 import 'package:alandalos_project/Features/review_tab/data_source/review_data_source.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_cubit.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<GetExamsDetailsCubit>(
           create: (BuildContext context) => GetExamsDetailsCubit(GetExamsDetails()),
+        ),
+        BlocProvider<GetReviewsDetailsCubit>(
+          create: (BuildContext context) => GetReviewsDetailsCubit(GetReviewsDetails()),
         ),
       ],
       child: MaterialApp(

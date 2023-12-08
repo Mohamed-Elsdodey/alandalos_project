@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 class ReviewsTabScreen extends StatelessWidget {
 
 
-  const ReviewsTabScreen({super.key, required this.data});
+  const ReviewsTabScreen({super.key, required this.data, required this.parentId});
   final ReviewsModel data;
+  final String parentId;
   @override
 
   @override
   Widget build(BuildContext context) {
 
-        return  ReviewsTabBody(data: data,);
+        return  ReviewsTabBody(data: data,parentId: parentId,);
   }
 }
