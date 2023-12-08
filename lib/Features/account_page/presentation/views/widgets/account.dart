@@ -61,7 +61,7 @@ class _AccountPageState extends State<AccountPage> {
                 // BlocProvider.of<BottomNavCubit>(context)
                 //     .updateBottomNavIndex(kEditProfileScreen);
                      },
-              child: IconBox(child: SvgPicture.asset("assets/icons/setting.svg", width: 20, height: 20),  ))
+              child: IconBox(child: SvgPicture.asset("assets/icons/setting.svg", width: 21, height: 20),  ))
         ],
       );
   }
