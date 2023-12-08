@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../../Core/utils/constants.dart';
 import 'exam_list_view_widget.dart';
 class ExamListWidgets extends StatelessWidget {
-   ExamListWidgets({super.key, required this.data});
+   ExamListWidgets({super.key, required this.data, required this.parentId});
   final ExamsModel data;
+  final String parentId;
   var listColor = [kChildrenContainerColor1, kChildrenContainerColor2];
 
   final _random = Random();
@@ -17,6 +18,8 @@ class ExamListWidgets extends StatelessWidget {
       itemBuilder: (context, index) {
         return
           ExamListView(
+             parentId: parentId,
+            examsId: data.data![index].id.toString(),
             degreeStudent: data.data![index].degreeOfStudent.toString(),
             subjectStudent: data.data![index].category!.title.toString(),
             teacherName: data.data![index].teacher!.name!,

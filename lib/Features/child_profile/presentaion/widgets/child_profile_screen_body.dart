@@ -169,7 +169,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              ExamTabScreen(data: state.dataInfo),
+                              ExamTabScreen(data: state.dataInfo,parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureExams) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -200,7 +200,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              AbsencesTabScreen(data: state.dataInfo),
+                              AbsencesTabScreen(data: state.dataInfo,parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureAbsence) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

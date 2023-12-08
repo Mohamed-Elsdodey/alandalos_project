@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
-import 'package:alandalos_project/Features/home/presentation/widgets/home_children_list_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Core/utils/constants.dart';
 import 'absences_list_view_widget.dart';
 class AbsencesListWidgets extends StatefulWidget {
-  const AbsencesListWidgets({super.key, required this.data});
+  const AbsencesListWidgets({super.key, required this.data, required this.parentId});
   final AbsenceModel data;
+  final String parentId;
   @override
   State<AbsencesListWidgets> createState() => _ExamListWidgetsState();
 }
@@ -23,6 +23,8 @@ class _ExamListWidgetsState extends State<AbsencesListWidgets> {
       itemCount: widget.data.data!.length,
       itemBuilder: (context, index) {
         return AbsencesListView(
+          parentId: widget.parentId,
+          absenceId: widget.data.data![index].id.toString(),
           date: widget.data.data![index].date.toString(),
           numberOfAbsence: widget.data.data![index].absenceDay.toString(),
           numberOfDelay: widget.data.data![index].delayDay.toString(),

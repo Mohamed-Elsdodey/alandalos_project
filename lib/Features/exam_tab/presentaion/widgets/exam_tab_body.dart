@@ -6,8 +6,9 @@ import '../../../../core/utils/constants.dart';
 import 'exam_List_widgets.dart';
 
 class ExamTabBody extends StatelessWidget {
-  const ExamTabBody({super.key, required this.data});
+  const ExamTabBody({super.key, required this.data, required this.parentId});
 final ExamsModel data;
+final String parentId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +63,7 @@ final ExamsModel data;
                           left:5),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child:  ExamListWidgets(data: data),
+                        child:  ExamListWidgets(data: data,parentId: parentId),
                       ),
                     ),
                   ],

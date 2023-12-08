@@ -6,8 +6,9 @@ import '../../../../core/utils/constants.dart';
 import 'absences_List_widgets.dart';
 
 class AbsencesTabBody extends StatelessWidget {
-  const AbsencesTabBody({super.key, required this.data});
+  const AbsencesTabBody({super.key, required this.data, required this.parentId});
 final AbsenceModel data;
+final String parentId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,7 @@ final AbsenceModel data;
                           left:  10 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child:  AbsencesListWidgets(data: data),
+                        child:  AbsencesListWidgets(data: data,parentId: parentId),
                       ),
                     ),
                   ],

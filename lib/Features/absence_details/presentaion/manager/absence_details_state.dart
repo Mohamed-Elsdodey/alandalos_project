@@ -1,20 +1,20 @@
 
 
-import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
+import 'package:alandalos_project/Features/absence_details/model/absenceDetailsModel.dart';
 
-abstract class GetAbsenceState {}
+abstract class GetAbsenceDetailsState {}
 
-class GetAbsenceInitial extends GetAbsenceState {}
-class FeaturedRepositoryFailureAbsence extends GetAbsenceState {
+class GetAbsenceDetailsInitial extends GetAbsenceDetailsState {}
+class FeaturedRepositoryFailureAbsenceDetails extends GetAbsenceDetailsState {
   final List<String>? errMessage;
 
-  FeaturedRepositoryFailureAbsence(this.errMessage);
+  FeaturedRepositoryFailureAbsenceDetails(this.errMessage);
 }
-class FeaturedRepositorySuccessAbsence extends GetAbsenceState {
-  final AbsenceModel dataInfo;
-  FeaturedRepositorySuccessAbsence(this.dataInfo);
+class FeaturedRepositorySuccessAbsenceDetails extends GetAbsenceDetailsState {
+  final AbsenceDetailsModel dataInfo;
+  FeaturedRepositorySuccessAbsenceDetails(this.dataInfo);
 }
-class FeaturedRepositoryLoadingAbsence extends GetAbsenceState {
+class FeaturedRepositoryLoadingAbsenceDetails extends GetAbsenceDetailsState {
 
 
 }
