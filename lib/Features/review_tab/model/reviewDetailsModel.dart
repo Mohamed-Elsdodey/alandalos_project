@@ -1,61 +1,73 @@
 
-class ExamDetailsModel {
-  List<Datum>? data;
+class ReviewDetailsModel {
+  Data? data;
   List<String>? message;
   int? status;
 
-  ExamDetailsModel({
+  ReviewDetailsModel({
     this.data,
     this.message,
     this.status,
   });
 
-  factory ExamDetailsModel.fromJson(Map<String, dynamic> json) => ExamDetailsModel(
-    data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
-    message: json["message"] == null ? [] : List<String>.from(json["message"]!.map((x) => x)),
-    status: json["status"],
+  factory ReviewDetailsModel.fromJson(Map<String, dynamic> json) => ReviewDetailsModel(
+      data: json["data"] == null ? null : Data.fromJson(json["data"]),
+      message: json["message"] == null ? [] : List<String>.from(json["message"]!.map((x) => x)),
+  status: json["status"],
   );
 
   Map<String, dynamic> toJson() => {
-    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
-    "message": message == null ? [] : List<dynamic>.from(message!.map((x) => x)),
-    "status": status,
-  };
+  "data": data?.toJson(),
+  "message": message == null ? [] : List<dynamic>.from(message!.map((x) => x)),
+  "status": status,
+};
 }
 
-class Datum {
+class Data {
   int? id;
-  String? title;
-  num? degreeOfExam;
-  num? degreeOfStudent;
+  String? date;
+  String? type;
+  num? points;
   Category? category;
   Teacher? teacher;
+  num? balance;
+  num? totalPoints;
+  num? roomRanking;
 
-  Datum({
+  Data({
     this.id,
-    this.title,
-    this.degreeOfExam,
-    this.degreeOfStudent,
+    this.date,
+    this.type,
+    this.points,
     this.category,
     this.teacher,
+    this.balance,
+    this.totalPoints,
+    this.roomRanking,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
     id: json["id"],
-    title: json["title"],
-    degreeOfExam: json["degree_of_exam"],
-    degreeOfStudent: json["degree_of_student"],
+    date: json["date"] ,
+    type: json["type"],
+    points: json["points"],
     category: json["category"] == null ? null : Category.fromJson(json["category"]),
     teacher: json["teacher"] == null ? null : Teacher.fromJson(json["teacher"]),
+    balance: json["balance"],
+    totalPoints: json["total_points"],
+    roomRanking: json["room_ranking"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "title": title,
-    "degree_of_exam": degreeOfExam,
-    "degree_of_student": degreeOfStudent,
+    "date": date,
+    "type": type,
+    "points": points,
     "category": category?.toJson(),
     "teacher": teacher?.toJson(),
+    "balance": balance,
+    "total_points": totalPoints,
+    "room_ranking": roomRanking,
   };
 }
 
