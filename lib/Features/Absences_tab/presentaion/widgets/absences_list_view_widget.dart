@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../../home/presentation/widgets/custom_home_container.dart';
 class AbsencesListView extends StatelessWidget {
-  const AbsencesListView({super.key, required this.color});
+  const AbsencesListView({super.key, required this.color, required this.status, required this.numberOfAbsence, required this.numberOfDelay, required this.date});
   final Color color;
-
+  final String status,numberOfAbsence,numberOfDelay,date;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +23,7 @@ class AbsencesListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "(غياب ) ",
+                    "($status ) ",
                     style: TextStyle(
                       color: Colors.red,
                       fontSize: context.screenWidth*0.028,
@@ -51,7 +51,7 @@ class AbsencesListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "(1 ) ",
+                    "($numberOfDelay ) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -79,7 +79,7 @@ class AbsencesListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "(1 ) ",
+                    "($numberOfAbsence ) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -107,7 +107,7 @@ class AbsencesListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "14 - 5 - 2023 ",
+                    "$date ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,

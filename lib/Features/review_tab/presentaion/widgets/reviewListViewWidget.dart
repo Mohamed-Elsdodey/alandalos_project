@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../../home/presentation/widgets/custom_home_container.dart';
 class ReviewListView extends StatelessWidget {
-  const ReviewListView({super.key, required this.color});
+  const ReviewListView({super.key, required this.color, required this.status, required this.points, required this.balance, required this.totalPoints, required this.rankClass, required this.subject, required this.date, required this.teacherName});
   final Color color;
-
+  final String status,points,balance,totalPoints,rankClass,subject,date,teacherName;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +24,7 @@ class ReviewListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "تميز ",
+                   status,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -52,7 +52,7 @@ class ReviewListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "(1) ",
+                    "($points) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -80,7 +80,7 @@ class ReviewListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "(4) ",
+                    "($balance) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -108,7 +108,7 @@ class ReviewListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "(27) ",
+                    "($totalPoints) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -136,7 +136,7 @@ class ReviewListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "(3) ",
+                    "($rankClass) ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -174,7 +174,7 @@ class ReviewListView extends StatelessWidget {
                     width: context.screenWidth * .009,
                   ),
                   Text(
-                    " : المادة الدراسية",
+                    " : $subject",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.03,
@@ -189,7 +189,7 @@ class ReviewListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "عبد الرحمن",
+                    "$teacherName",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,
@@ -216,7 +216,7 @@ class ReviewListView extends StatelessWidget {
 
                 children: [
                   Text(
-                    "14 - 5 - 2023 ",
+                    "$date ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: context.screenWidth*0.028,

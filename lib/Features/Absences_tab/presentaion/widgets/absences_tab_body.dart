@@ -1,13 +1,13 @@
+import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
 import 'package:alandalos_project/core/utils/helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
 import 'absences_List_widgets.dart';
 
 class AbsencesTabBody extends StatelessWidget {
-  const AbsencesTabBody({super.key});
-
+  const AbsencesTabBody({super.key, required this.data});
+final AbsenceModel data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +67,7 @@ class AbsencesTabBody extends StatelessWidget {
                           left:  10 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child: const AbsencesListWidgets(),
+                        child:  AbsencesListWidgets(data: data),
                       ),
                     ),
                   ],

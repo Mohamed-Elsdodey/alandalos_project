@@ -1,20 +1,20 @@
-import 'package:alandalos_project/Features/Absences_tab/data/data_source.dart';
-import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
+import 'package:alandalos_project/Features/review_tab/data_source/review_data_source.dart';
+import 'package:alandalos_project/Features/review_tab/model/review_model.dart';
 import 'package:bloc/bloc.dart';
-import 'absence_state.dart';
+import 'reviews_state.dart';
 
-class GetAbsenceCubit extends Cubit<GetAbsenceState> {
-  GetAbsenceCubit(this.getAbsence) : super(GetAbsenceInitial());
-  final GetAbsence getAbsence;
-  Future<void> getAllDataAbsence(String parentId) async {
-    AbsenceModel data;
-    data = await getAbsence.getAbsenceData(parentId);
+class GetReviewCubit extends Cubit<GetReviewsState> {
+  GetReviewCubit(this.getReview) : super(GetReviewsInitial());
+  final GetReview getReview;
+  Future<void> getAllDataReviews(String parentId) async {
+    ReviewsModel data;
+    data = await getReview.getReviewData(parentId);
     if(data.status == 200)
     {
-      emit(FeaturedRepositorySuccessAbsence(data));
+      emit(FeaturedRepositorySuccessReviews(data));
     }
     else {
-      emit(FeaturedRepositoryFailureAbsence(data.message!));
+      emit(FeaturedRepositoryFailureReviews(data.message!));
 
     }
   }

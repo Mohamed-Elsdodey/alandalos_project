@@ -33,18 +33,18 @@ final Data data;
                     physics: const BouncingScrollPhysics(),
                     child:
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: 20,
 
                       ),
                       child: Column(
 
                         children: [
-                          HomeTextDivider(
+                          const HomeTextDivider(
                             rowText:"الاطفال ",
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 right: 20,
                                 left:20),
                             child: SizedBox(

@@ -1,8 +1,12 @@
+import 'package:alandalos_project/Features/Absences_tab/presentaion/manager/absence_cubit.dart';
 import 'package:alandalos_project/Features/auth/login_screen/presentaion/login_screen.dart';
 import 'package:alandalos_project/Features/auth/login_screen/presentaion/manager/login_cubit.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_cubit.dart';
+import 'package:alandalos_project/Features/review_tab/data_source/review_data_source.dart';
+import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'Features/Absences_tab/data/data_source.dart';
 import 'Features/auth/login_screen/data/data_source.dart';
 import 'Features/exam_tab/data/data_source.dart';
 void main() {
@@ -21,10 +25,15 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoginCubit>(
           create: (BuildContext context) => LoginCubit(PostDataServices()),
         ),
-        BlocProvider<ExamDetailsCubit>(
-          create: (BuildContext context) => ExamDetailsCubit(GetExamDetails()),
+        BlocProvider<ExamCubit>(
+          create: (BuildContext context) => ExamCubit(GetExamDetails()),
         ),
-
+        BlocProvider<GetAbsenceCubit>(
+          create: (BuildContext context) => GetAbsenceCubit(GetAbsence()),
+        ),
+        BlocProvider<GetReviewCubit>(
+          create: (BuildContext context) => GetReviewCubit(GetReview()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

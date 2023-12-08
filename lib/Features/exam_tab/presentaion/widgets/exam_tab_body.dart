@@ -1,5 +1,5 @@
 import 'package:alandalos_project/Core/utils/helper.dart';
-import 'package:alandalos_project/Features/exam_tab/model/exam_details_model.dart';
+import 'package:alandalos_project/Features/exam_tab/model/exam_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
@@ -7,7 +7,7 @@ import 'exam_List_widgets.dart';
 
 class ExamTabBody extends StatelessWidget {
   const ExamTabBody({super.key, required this.data});
-final ExamDetailsModel data;
+final ExamsModel data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

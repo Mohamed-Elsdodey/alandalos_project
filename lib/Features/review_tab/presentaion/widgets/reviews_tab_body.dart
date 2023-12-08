@@ -1,12 +1,13 @@
 import 'package:alandalos_project/Core/utils/helper.dart';
+import 'package:alandalos_project/Features/review_tab/model/review_model.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/widgets/review_List_widgets.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
 
 class ReviewsTabBody extends StatelessWidget {
-  const ReviewsTabBody({super.key});
-
+  const ReviewsTabBody({super.key, required this.data});
+final ReviewsModel data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +65,7 @@ class ReviewsTabBody extends StatelessWidget {
                           left:  5 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child: const ReviewListWidgets(),
+                        child:  ReviewListWidgets(data: data),
                       ),
                     ),
                   ],

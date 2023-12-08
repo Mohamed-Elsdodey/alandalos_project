@@ -1,11 +1,12 @@
 import 'dart:math';
+import 'package:alandalos_project/Features/review_tab/model/review_model.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/widgets/reviewListViewWidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Core/utils/constants.dart';
 class ReviewListWidgets extends StatefulWidget {
-  const ReviewListWidgets({super.key});
-
+  const ReviewListWidgets({super.key, required this.data});
+  final ReviewsModel data;
   @override
   State<ReviewListWidgets> createState() => _ReviewListWidgetsState();
 }
@@ -18,9 +19,17 @@ class _ReviewListWidgetsState extends State<ReviewListWidgets> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 4,
+      itemCount: widget.data.data!.length,
       itemBuilder: (context, index) {
         return ReviewListView(
+          status: widget.data.data![index].type.toString(),
+          date: widget.data.data![index].date.toString(),
+          balance: widget.data.data![index].balance.toString(),
+          points: widget.data.data![index].points.toString(),
+          teacherName: widget.data.data![index].teacher!.name.toString(),
+          rankClass: widget.data.data![index].roomRanking.toString(),
+          subject: widget.data.data![index].category!.title.toString(),
+          totalPoints:  widget.data.data![index].totalPoints.toString(),
           color: listColor[_random.nextInt(listColor.length)],
         );
       },
