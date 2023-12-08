@@ -1,20 +1,18 @@
 
+import '../../models/message_model.dart';
+abstract class MessageState {}
 
-import 'package:alandalos_project/Features/exam_tab/model/exam_model.dart';
-
-abstract class ExamDetailsState {}
-
-class ExamDetailsInitial extends ExamDetailsState {}
-class FeaturedRepositoryFailureExams extends ExamDetailsState {
+class ExamDetailsInitial extends MessageState {}
+class FeaturedRepositoryFailureMessages extends MessageState {
   final List<String>? errMessage;
 
-  FeaturedRepositoryFailureExams(this.errMessage);
+  FeaturedRepositoryFailureMessages(this.errMessage);
 }
-class FeaturedRepositorySuccessExams extends ExamDetailsState {
-  final ExamsModel dataInfo;
-  FeaturedRepositorySuccessExams(this.dataInfo);
+class FeaturedRepositorySuccessMessages extends MessageState {
+  final MessageModel dataInfo;
+  FeaturedRepositorySuccessMessages(this.dataInfo);
 }
-class FeaturedRepositoryLoadingExams extends ExamDetailsState {
+class FeaturedRepositoryLoadingMessages extends MessageState {
 
 
 }

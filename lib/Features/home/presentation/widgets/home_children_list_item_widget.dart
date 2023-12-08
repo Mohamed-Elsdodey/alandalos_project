@@ -18,7 +18,7 @@ class HomeChildrenListItemWidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  ChildProfileScreenBody(parentId: parentId),
+              builder: (context) =>  ChildProfileScreenBody(parentId: parentId,classStudent: classStudent,namStudent: nameStudent),
             ));
       },
       child: Padding(

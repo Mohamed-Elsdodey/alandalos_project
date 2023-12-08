@@ -1,18 +1,15 @@
-import 'dart:math';
 
 import 'package:alandalos_project/Core/utils/helper.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../Core/utils/constants.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../home/presentation/widgets/custom_home_container.dart';
-class ExamsScreenBody extends StatelessWidget {
-  const ExamsScreenBody({super.key, required this.subjectStudent, required this.teacherName, required this.totalDegree, required this.degreeStudent});
+class MessageDetailsScreenBody extends StatelessWidget {
+  const MessageDetailsScreenBody({super.key, required this.title, required this.text, required this.date, });
 
-  final String subjectStudent,teacherName,totalDegree,degreeStudent;  @override
+  final String title,text,date;  @override
   Widget build(BuildContext context) {
-    var listColor = [kChildrenContainerColor1, kChildrenContainerColor2];
-    final _random = Random();
+
     return  Scaffold(
       backgroundColor: Colors.white,
   appBar:     AppBar(
@@ -46,142 +43,55 @@ class ExamsScreenBody extends StatelessWidget {
       ],
       backgroundColor: kPrimaryColorWhite,
       title: Text(
-        "تفاصيل الغياب ",
+        "تفاصيل الرسالة ",
         style: TextStyle(fontSize: context.screenWidth * 0.04),
       )),
 body: Column(
 
 
     children: [
-      Image.asset(
-          height:context.screenHeight*0.3,
-          "assets/images/exam.png"),
+      CircleAvatar(
+        backgroundColor: kBackGroundColor,
+        radius: context.screenHeight * .09,
+        child: Image.asset(
+
+          AssetsData.schoolIcon,
+        ),
+      ),
       SizedBox(height: context.screenHeight*0.02,),
-      Padding(
-        padding: const EdgeInsets.only(right: 16,left: 16),
-        child:CustomHomeContainer(
-          color:  listColor[_random.nextInt(listColor.length)],
-          height: context.screenHeight*0.22,
-          width: context.screenWidth * 0.9,
-          child:
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal: context.screenWidth*0.03,vertical: context.screenHeight*0.03),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      subjectStudent,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.028,
-
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.screenWidth * .009,
-                    ),Text(
-                      " : المواد الدراسية ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.03,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                  ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomHomeContainer(
+            height: context.screenHeight * .1,
+            width: context.screenWidth,
+            color: Colors.white,
+            child: ListTile(
+              title:  Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+              subtitle:  Text(
+                text,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 10,
                 ),
-                SizedBox(height: context.screenHeight*0.011,),
-                Row(                mainAxisAlignment: MainAxisAlignment.end,
-
-                  children: [
-                    Text(
-                      teacherName,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.028,
-
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.screenWidth * .009,
-                    ),
-                    Text(
-                      " : اسم المدرس",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.03,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                  ],
+              ),
+              trailing:  Text(
+                date,
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+              leading: CircleAvatar(
+                backgroundColor: kBackGroundColor,
+                radius: context.screenHeight * .03,
+                child: Image.asset(
+                  AssetsData.schoolIcon,
                 ),
-                SizedBox(height: context.screenHeight*0.011,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      totalDegree,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.028,
-
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.screenWidth * .009,
-                    ), Text(
-                      " : مجموع الدرجات",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.03,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                  ],
-                ),
-                SizedBox(height: context.screenHeight*0.011,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      degreeStudent,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.028,
-
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.screenWidth * .009,
-                    ),Text(
-                      " : درجة الطالب  ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.screenWidth*0.03,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                  ],
-                ),
-
-
-
-              ],
+              ),
             ),
           ),
         ),
-      ),
     ]),
     );
   }

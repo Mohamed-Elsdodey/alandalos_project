@@ -1,6 +1,5 @@
+import 'package:alandalos_project/Core/utils/helper.dart';
 import 'package:flutter/material.dart';
-import 'package:school/core/utils/helper.dart';
-
 import '../../../../core/utils/constants.dart';
 
 class MessagesFloatingButtonWidget extends StatelessWidget {
@@ -36,9 +35,9 @@ class MessagesFloatingButtonWidget extends StatelessWidget {
             kPrimaryColor,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(context.locale.translate("new_message")!),
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("newmessage"),
         ),
       ),
     );

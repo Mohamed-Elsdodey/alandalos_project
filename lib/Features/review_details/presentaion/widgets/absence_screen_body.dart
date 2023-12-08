@@ -1,8 +1,6 @@
 import 'dart:math';
-
 import 'package:alandalos_project/Core/utils/helper.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../Core/utils/constants.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../home/presentation/widgets/custom_home_container.dart';
@@ -22,6 +20,7 @@ class ReviewsScreenBody extends StatelessWidget {
       elevation: 0,
       leading: GestureDetector(
         onTap: () {
+
           Navigator.pop(context);
         },
         child: Padding(

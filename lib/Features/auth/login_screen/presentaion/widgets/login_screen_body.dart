@@ -20,8 +20,10 @@ class LoginScreenBody extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body:       SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Gaps.vGap10,
+            Gaps.vGap100,
             Center(
               child: Image.asset(
                 AssetsData.logInImage,

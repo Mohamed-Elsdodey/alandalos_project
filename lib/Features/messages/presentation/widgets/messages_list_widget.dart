@@ -1,13 +1,13 @@
+import 'package:alandalos_project/Core/utils/helper.dart';
+import 'package:alandalos_project/Features/messages/models/message_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:school/core/utils/helper.dart';
-
 import 'message_list_item_widget.dart';
 
 class MessagesListWidget extends StatelessWidget {
   const MessagesListWidget({
-    super.key,
+    super.key, required this.data,
   });
-
+final MessageModel data;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -18,9 +18,12 @@ class MessagesListWidget extends StatelessWidget {
         horizontal: context.screenWidth * .035,
       ),
       physics: const BouncingScrollPhysics(),
-      itemCount: 10,
+      itemCount: data.data!.length,
       itemBuilder: (context, index) {
-        return const MessagesListItemWidget();
+        return  MessagesListItemWidget(
+          text: data.data![index].text.toString(),
+
+          date: data.data![index].date.toString(),title: data.data![index].title.toString(),);
       },
     );
   }

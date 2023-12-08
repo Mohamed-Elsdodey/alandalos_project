@@ -1,16 +1,15 @@
-import 'package:alandalos_project/Features/exams_details/presentaion/widgets/absence_screen_body.dart';
+import 'package:alandalos_project/Features/message_details/presentaion/widgets/message_details_screen_body.dart';
 import 'package:flutter/material.dart';
-class ExamsDetailsScreen extends StatelessWidget {
-  const ExamsDetailsScreen({super.key, required this.subjectStudent, required this.teacherName, required this.totalDegree, required this.degreeStudent});
-  final String subjectStudent,teacherName,totalDegree,degreeStudent;
+class MessageDetailsScreen extends StatelessWidget {
+  const MessageDetailsScreen({super.key, required this.title, required this.text, required this.date, });
+  final String title,text,date;
 
   @override
   Widget build(BuildContext context) {
-    return  ExamsScreenBody(
-   teacherName: teacherName,
-      subjectStudent: subjectStudent,
-      totalDegree: totalDegree,
-      degreeStudent: degreeStudent,
+    return  MessageDetailsScreenBody(
+   text: text,
+      title: title,
+      date: date,
 
     );
   }

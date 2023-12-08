@@ -4,6 +4,9 @@ import 'package:alandalos_project/Features/Absences_tab/presentaion/manager/abse
 import 'package:alandalos_project/Features/exam_tab/presentaion/exam_tab.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_cubit.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_state.dart';
+import 'package:alandalos_project/Features/messages/presentation/manager/message_cubit.dart';
+import 'package:alandalos_project/Features/messages/presentation/manager/message_state.dart';
+import 'package:alandalos_project/Features/messages/presentation/screens/messages_screen.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_cubit.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_state.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +19,8 @@ import '../../../review_tab/presentaion/reviews_tab.dart';
 import 'contant_card.dart';
 
 class ChildProfileScreenBody extends StatefulWidget {
-  const ChildProfileScreenBody({super.key, required this.parentId});
-  final String parentId;
+  const ChildProfileScreenBody({super.key, required this.parentId, required this.namStudent, required this.classStudent});
+  final String parentId,namStudent,classStudent;
   @override
   State<ChildProfileScreenBody> createState() => _ChildProfileScreenBodyState();
 }
@@ -92,8 +95,8 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                   SizedBox(
                     height: context.screenHeight * 0.02,
                   ),
-                  const Text(
-                    "mohamed adel",
+                   Text(
+                    widget.namStudent,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -103,7 +106,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                     height: context.screenHeight * 0.01,
                   ),
                   Text(
-                    "الصف الاول",
+                    widget.classStudent,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: context.screenWidth * 0.03,
@@ -223,7 +226,35 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                 ),
               ),
               ContantCardChild(text: "درجات الطالب", image:    Image.asset(   width: context.screenWidth*0.15,
-               height: context.screenHeight*0.15,"assets/images/immigration.png"),)
+               height: context.screenHeight*0.15,"assets/images/immigration.png"),),
+              BlocListener<MessageCubit, MessageState>(
+                listener: (context, state) {
+                  if (state is FeaturedRepositorySuccessMessages) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>   MessagesScreen(data: state.dataInfo),
+                        ));
+                  } else if (state is FeaturedRepositoryFailureMessages) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("error"),
+                    ));
+                  }
+                },
+                child: GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<MessageCubit>(context)
+                        .getAllData(widget.parentId);
+                  },
+                  child: ContantCardChild(
+                    text: "الرسايل",
+                    image: Image.asset(
+                        width: context.screenWidth * 0.15,
+                        height: context.screenHeight * 0.15,
+                        "assets/images/message.png"),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
