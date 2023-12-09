@@ -1,20 +1,20 @@
 
 
-import 'package:alandalos_project/Features/exam_tab/model/exam_model.dart';
+import 'package:alandalos_project/Features/notifications/model/notification_model.dart';
 
-abstract class ExamDetailsState {}
+abstract class NotificationState {}
 
-class ExamDetailsInitial extends ExamDetailsState {}
-class FeaturedRepositoryFailureExams extends ExamDetailsState {
+class NotificationInitial extends NotificationState {}
+class FeaturedRepositoryFailureNotification extends NotificationState {
   final List<String>? errMessage;
 
-  FeaturedRepositoryFailureExams(this.errMessage);
+  FeaturedRepositoryFailureNotification(this.errMessage);
 }
-class FeaturedRepositorySuccessExams extends ExamDetailsState {
-  final ExamsModel dataInfo;
-  FeaturedRepositorySuccessExams(this.dataInfo);
+class FeaturedRepositorySuccessNotification extends NotificationState {
+  final NotificationModel dataInfo;
+  FeaturedRepositorySuccessNotification(this.dataInfo);
 }
-class FeaturedRepositoryLoadingExams extends ExamDetailsState {
+class FeaturedRepositoryLoadingNotification extends NotificationState {
 
 
 }

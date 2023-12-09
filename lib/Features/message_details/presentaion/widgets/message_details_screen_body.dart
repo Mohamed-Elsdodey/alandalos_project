@@ -12,7 +12,8 @@ class MessageDetailsScreenBody extends StatelessWidget {
 
     return  Scaffold(
       backgroundColor: Colors.white,
-  appBar:     AppBar(
+  appBar:
+  AppBar(
       automaticallyImplyLeading: false,
       centerTitle: true,
       elevation: 0,
@@ -69,12 +70,12 @@ body: Column(
               title:  Text(
                 title,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               ),
               subtitle:  Text(
                 text,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 10,
                 ),
               ),

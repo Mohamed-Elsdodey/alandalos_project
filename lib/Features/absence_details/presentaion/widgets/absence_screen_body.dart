@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../../../Core/utils/constants.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../home/presentation/widgets/custom_home_container.dart';
-class AbsenceScreenBody extends StatelessWidget {
-  const AbsenceScreenBody({super.key, required this.status, required this.numberOfAbsence, required this.numberOfDelay, required this.date});
+class AbsenceScreenDetailsBody extends StatelessWidget {
+  const AbsenceScreenDetailsBody({super.key, required this.status, required this.numberOfAbsence, required this.numberOfDelay, required this.date});
 
   final String status,numberOfAbsence,numberOfDelay,date;
   @override

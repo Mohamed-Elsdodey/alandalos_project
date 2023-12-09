@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../locale/app_localizations.dart';
 
 // ignore: must_be_immutable
 class CustomSimpleAppBar extends StatelessWidget {
@@ -22,11 +21,9 @@ class CustomSimpleAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late AppLocalizations locale;
-    locale = AppLocalizations.of(context)!;
-    // final screenSize = MediaQuery.of(context).size;
+
     return SizedBox(
-      height: context.screenHeight * .11,
+      //height: context.screenHeight * .05,
       child: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: backgroundColor ?? Colors.white,
@@ -45,10 +42,11 @@ class CustomSimpleAppBar extends StatelessWidget {
               onTap: () {
                  Navigator.pop(context);
               },
-              child: Icon(
-                locale.isEnLocale
-                    ? FontAwesomeIcons.arrowRightLong
-                    : FontAwesomeIcons.arrowLeftLong,
+              child: const Icon(
+                FontAwesomeIcons.arrowRightLong,
+                // locale.isEnLocale
+                //     ? FontAwesomeIcons.arrowRightLong
+                //     : FontAwesomeIcons.arrowLeftLong,
                 color: Colors.black,
               ),
             ),

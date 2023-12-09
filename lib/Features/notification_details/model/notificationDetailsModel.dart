@@ -23,14 +23,16 @@ class NotificationDetailsModel {
 }
 
 class NotificationDetailsData {
+
   int? id;
   String? title;
   String? type;
   String? text;
   String? date;
   int? foreignId;
+  String? link;
 
-  NotificationDetailsData({this.id, this.title, this.type, this.text, this.date, this.foreignId});
+  NotificationDetailsData({this.id, this.title, this.type, this.text, this.date, this.foreignId,this.link});
 
   NotificationDetailsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

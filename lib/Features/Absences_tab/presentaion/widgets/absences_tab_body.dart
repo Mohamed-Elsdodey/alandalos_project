@@ -1,6 +1,11 @@
 import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
+import 'package:alandalos_project/Features/absence_details/model/absenceDetailsModel.dart';
+import 'package:alandalos_project/Features/absence_details/presentaion/absence_screen.dart';
+import 'package:alandalos_project/Features/absence_details/presentaion/manager/absence_details_cubit.dart';
+import 'package:alandalos_project/Features/absence_details/presentaion/manager/absence_details_state.dart';
 import 'package:alandalos_project/core/utils/helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
 import 'absences_List_widgets.dart';
@@ -9,6 +14,7 @@ class AbsencesTabBody extends StatelessWidget {
   const AbsencesTabBody({super.key, required this.data, required this.parentId});
 final AbsenceModel data;
 final String parentId;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +38,6 @@ final String parentId;
               EdgeInsets.symmetric(horizontal: context.screenWidth * 0.02),
               child: GestureDetector(
                 onTap: () {
-                  // BlocProvider.of<BottomNavCubit>(context)
-                  //     .updateBottomNavIndex(kNotificationsScreen);
                 },
                 child: Image.asset(
                   AssetsData.bellIcon,
@@ -55,7 +59,7 @@ final String parentId;
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 10,
                   left: 10,
                   right: 10,
@@ -63,12 +67,13 @@ final String parentId;
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           right: 10,
                           left:  10 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child:  AbsencesListWidgets(data: data,parentId: parentId),
+                        child:
+                        AbsencesListWidgets(data: data,parentId: parentId),
                       ),
                     ),
                   ],

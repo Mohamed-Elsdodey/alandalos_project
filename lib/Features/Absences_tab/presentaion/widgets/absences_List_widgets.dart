@@ -1,8 +1,13 @@
 import 'dart:math';
 import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
+import 'package:alandalos_project/Features/absence_details/model/absenceDetailsModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../Core/utils/constants.dart';
+import '../../../absence_details/presentaion/absence_screen.dart';
+import '../../../absence_details/presentaion/manager/absence_details_cubit.dart';
+import '../../../absence_details/presentaion/manager/absence_details_state.dart';
 import 'absences_list_view_widget.dart';
 class AbsencesListWidgets extends StatefulWidget {
   const AbsencesListWidgets({super.key, required this.data, required this.parentId});
@@ -19,18 +24,20 @@ class _ExamListWidgetsState extends State<AbsencesListWidgets> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return
+      ListView.builder(
       itemCount: widget.data.data!.length,
       itemBuilder: (context, index) {
-        return AbsencesListView(
-          parentId: widget.parentId,
-          absenceId: widget.data.data![index].id.toString(),
-          date: widget.data.data![index].date.toString(),
-          numberOfAbsence: widget.data.data![index].absenceDay.toString(),
-          numberOfDelay: widget.data.data![index].delayDay.toString(),
-          status: widget.data.data![index].type.toString(),
-          color: listColor[_random.nextInt(listColor.length)],
-        );
+        return
+          AbsencesListView(
+            absenceId: widget.data.data![index].id.toString(),
+            parentId: widget.parentId,
+            date: widget.data.data![index].date.toString(),
+            numberOfAbsence: widget.data.data![index].absenceDay.toString(),
+            numberOfDelay: widget.data.data![index].delayDay.toString(),
+            status: widget.data.data![index].type.toString(),
+            color: listColor[_random.nextInt(listColor.length)],
+          );
       },
       padding: const EdgeInsets.only(top: 5, right: 5),
       physics: const BouncingScrollPhysics(),

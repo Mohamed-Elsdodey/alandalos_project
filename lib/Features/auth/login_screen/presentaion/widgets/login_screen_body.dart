@@ -62,7 +62,6 @@ class LoginScreenBody extends StatelessWidget {
                 } else if (state is FeaturedRepositorySuccess) {
                   Navigator.push(context, MaterialPageRoute(
                         builder: (context) => HomeScreen(
-
                           data: state.dataInfo,
                           nameParent: state.dataInfo.name!,)
                       ));

@@ -7,20 +7,26 @@ import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_det
 import 'package:alandalos_project/Features/messages/presentation/manager/message_cubit.dart';
 import 'package:alandalos_project/Features/messages/presentation/manager/message_state.dart';
 import 'package:alandalos_project/Features/messages/presentation/screens/messages_screen.dart';
+import 'package:alandalos_project/Features/notifications/presentation/manager/notification_cubit.dart';
+import 'package:alandalos_project/Features/notifications/presentation/manager/notification_state.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_cubit.dart';
 import 'package:alandalos_project/Features/review_tab/presentaion/manager/reviews_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../Absences_tab/presentaion/absences_tab.dart';
 import '../../../account_page/presentation/views/widgets/icon_box.dart';
+import '../../../notifications/presentation/screens/notification_screen.dart';
 import '../../../review_tab/presentaion/reviews_tab.dart';
 import 'contant_card.dart';
 
 class ChildProfileScreenBody extends StatefulWidget {
-  const ChildProfileScreenBody({super.key, required this.parentId, required this.namStudent, required this.classStudent});
-  final String parentId,namStudent,classStudent;
+  const ChildProfileScreenBody(
+      {super.key,
+      required this.parentId,
+      required this.namStudent,
+      required this.classStudent});
+  final String parentId, namStudent, classStudent;
   @override
   State<ChildProfileScreenBody> createState() => _ChildProfileScreenBodyState();
 }
@@ -66,15 +72,32 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
             ),
           ],
         )),
-        GestureDetector(
-            onTap: () {
-              // BlocProvider.of<BottomNavCubit>(context)
-              //     .updateBottomNavIndex(kEditProfileScreen);
-            },
-            child: IconBox(
-              child: SvgPicture.asset("assets/icons/setting.svg",
-                  width: 20, height: 20),
-            ))
+        BlocListener<NotificationCubit, NotificationState>(
+          listener: (context, state) {
+            if (state is FeaturedRepositorySuccessNotification) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  NotificationsScreen(
+                        parentId: widget.parentId,
+                        dataNotification: state.dataInfo),
+                  ));
+            } else if (state is FeaturedRepositoryFailureNotification) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("error"),
+              ));
+            }
+          },
+          child: GestureDetector(
+              onTap: () {
+                BlocProvider.of<NotificationCubit>(context)
+                    .getAllData(widget.parentId);
+              },
+              child: IconBox(
+                child: Image.asset("assets/icons/bell_icon.png",
+                    width: 20, height: 20),
+              )),
+        )
       ],
     );
   }
@@ -95,7 +118,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                   SizedBox(
                     height: context.screenHeight * 0.02,
                   ),
-                   Text(
+                  Text(
                     widget.namStudent,
                     style: TextStyle(
                         color: Colors.black,
@@ -142,7 +165,8 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  ReviewsTabScreen(data: state.dataInfo,parentId: widget.parentId),
+                          builder: (context) => ReviewsTabScreen(
+                              data: state.dataInfo, parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureReviews) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -164,15 +188,14 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                   ),
                 ),
               ),
-
               BlocListener<ExamCubit, ExamDetailsState>(
                 listener: (context, state) {
                   if (state is FeaturedRepositorySuccessExams) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              ExamTabScreen(data: state.dataInfo,parentId: widget.parentId),
+                          builder: (context) => ExamTabScreen(
+                              data: state.dataInfo, parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureExams) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -202,8 +225,8 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              AbsencesTabScreen(data: state.dataInfo,parentId: widget.parentId),
+                          builder: (context) => AbsencesTabScreen(
+                              data: state.dataInfo, parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureAbsence) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -225,15 +248,21 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                   ),
                 ),
               ),
-              ContantCardChild(text: "درجات الطالب", image:    Image.asset(   width: context.screenWidth*0.15,
-               height: context.screenHeight*0.15,"assets/images/immigration.png"),),
+              ContantCardChild(
+                text: "درجات الطالب",
+                image: Image.asset(
+                    width: context.screenWidth * 0.15,
+                    height: context.screenHeight * 0.15,
+                    "assets/images/immigration.png"),
+              ),
               BlocListener<MessageCubit, MessageState>(
                 listener: (context, state) {
                   if (state is FeaturedRepositorySuccessMessages) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>   MessagesScreen(data: state.dataInfo),
+                          builder: (context) =>
+                              MessagesScreen(data: state.dataInfo),
                         ));
                   } else if (state is FeaturedRepositoryFailureMessages) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

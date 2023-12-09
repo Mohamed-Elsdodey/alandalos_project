@@ -1,4 +1,5 @@
 import 'package:alandalos_project/Core/utils/helper.dart';
+import 'package:alandalos_project/Features/notifications/presentation/screens/notification_screen.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import '../../../auth/login_screen/model/login_model.dart';
@@ -22,10 +23,8 @@ final Data data;
             body: Column(
               children: [
                 CustomHomeAppBar(
-
                   nameParent:nameParent,
                   tapHandler: () {
-
                   },
                 ),
                 Expanded(

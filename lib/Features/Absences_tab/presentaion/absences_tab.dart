@@ -8,6 +8,6 @@ class AbsencesTabScreen extends StatelessWidget {
   final String parentId;
   @override
   Widget build(BuildContext context) {
-        return  AbsencesTabBody(data:data,parentId: parentId,);
+        return  AbsencesTabBody(data:data,parentId: parentId);
   }
 }

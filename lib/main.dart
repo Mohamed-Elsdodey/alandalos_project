@@ -5,6 +5,9 @@ import 'package:alandalos_project/Features/auth/login_screen/presentaion/login_s
 import 'package:alandalos_project/Features/auth/login_screen/presentaion/manager/login_cubit.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_cubit.dart';
 import 'package:alandalos_project/Features/messages/presentation/manager/message_cubit.dart';
+import 'package:alandalos_project/Features/notification_details/data-source/data-source.dart';
+import 'package:alandalos_project/Features/notification_details/presentaion/manager/exams_details_cubit.dart';
+import 'package:alandalos_project/Features/notifications/presentation/manager/notification_cubit.dart';
 import 'package:alandalos_project/Features/review_details/data-source/data-source.dart';
 import 'package:alandalos_project/Features/review_details/presentaion/manager/reviews_details_cubit.dart';
 import 'package:alandalos_project/Features/review_tab/data_source/review_data_source.dart';
@@ -17,6 +20,7 @@ import 'Features/exam_tab/data/data_source.dart';
 import 'Features/exams_details/data-source/data-source.dart';
 import 'Features/exams_details/presentaion/manager/exams_details_cubit.dart';
 import 'Features/messages/data/data_source.dart';
+import 'Features/notifications/data/data_source.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -53,6 +57,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<MessageCubit>(
           create: (BuildContext context) => MessageCubit(GetMessages()),
+        ),
+        BlocProvider<NotificationCubit>(
+          create: (BuildContext context) => NotificationCubit(GetNotification()),
+        ),
+        BlocProvider<GetNotificationDetailsCubit>(
+          create: (BuildContext context) => GetNotificationDetailsCubit(GetNotificationDetails()),
         ),
       ],
       child: MaterialApp(

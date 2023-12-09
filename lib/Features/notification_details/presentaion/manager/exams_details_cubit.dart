@@ -1,20 +1,22 @@
-import 'package:alandalos_project/Features/exams_details/data-source/data-source.dart';
-import 'package:alandalos_project/Features/exams_details/model/examDetailsModel.dart';
+import 'package:alandalos_project/Features/notification_details/data-source/data-source.dart';
 import 'package:bloc/bloc.dart';
+import '../../model/notificationDetailsModel.dart';
 import 'exams_details_state.dart';
 
-class GetExamsDetailsCubit extends Cubit<GetExamsDetailsState> {
-  GetExamsDetailsCubit(this.getExamsDetails) : super(GetExamsDetailsInitial());
-  final GetExamsDetails getExamsDetails;
-  Future<void> getAllDataExamsDetails(String parentId,String examsId) async {
-    ExamDetailsModel data;
-    data = await getExamsDetails.getExamsDataDetails(parentId,examsId);
+class GetNotificationDetailsCubit extends Cubit<GetNotificationDetailsState> {
+  GetNotificationDetailsCubit(this.getNotificationDetails) : super(GetNotificationDetailsInitial());
+  final GetNotificationDetails getNotificationDetails;
+  Future<void> getAllDataNotificationDetails(String parentId,String notificationId,foreignId) async {
+    NotificationDetailsModel data;
+    data = (await getNotificationDetails.getNotificationDataDetails(parentId,notificationId)) ;
     if(data.status == 200)
     {
-      emit(FeaturedRepositorySuccessExamsDetails(data));
+
+      emit(FeaturedRepositorySuccessNotificationDetails(data));
+
     }
     else {
-      emit(FeaturedRepositoryFailureExamsDetails(data.message!));
+      emit(FeaturedRepositoryFailureNotificationDetails(data.message!));
 
     }
   }

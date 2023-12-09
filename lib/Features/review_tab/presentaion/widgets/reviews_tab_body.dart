@@ -8,6 +8,7 @@ import '../../../../core/utils/constants.dart';
 class ReviewsTabBody extends StatelessWidget {
   const ReviewsTabBody({super.key, required this.data, required this.parentId});
 final ReviewsModel data;
+
 final String parentId;
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ final String parentId;
                           left:  5 ),
                       child: SizedBox(
                         height: context.screenHeight,
-                        child:  ReviewListWidgets(data: data,parentId: parentId),
+                        child:  ReviewListWidgets(data: data,parentId: parentId ),
                       ),
                     ),
                   ],
