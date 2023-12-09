@@ -21,28 +21,7 @@ class NotificationItemWidget extends StatelessWidget {
       listener: (context, state) {
         if(state is FeaturedRepositorySuccessNotificationDetails)
           {
-
-              if(state.dataInfo.data!.type == "review"){
-               Navigator.push(context, MaterialPageRoute(builder: (context) => const ReviewsDetailsScreen(date: "",balance: "",points: "",rankClass: "2",status: "",subject: "",teacherName: "",totalPoints: "12"),));
-              }
-              else if(state.dataInfo.data!.type == "exam"){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ExamsDetailsScreen(
-                  teacherName: "", totalDegree: "",degreeStudent: "",
-
-                  subjectStudent: '',),));
-
-              }
-              else if(state.dataInfo.data!.type == "message"){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationDetailsScreen(notificationDetailsData: state.dataInfo,parentId: parentId,notificationId: notificationId,foreignId: foreignId),));
-
-              }
-              else if (state.dataInfo.data!.type == "absence"){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const AbsenceScreenDetails(absenceId: "",status: "status",date: "",numberOfAbsence: "",numberOfDelay: "",),));
-
-              }
-              else {
-
-              }
+            Navigator.push(context,MaterialPageRoute(builder: (context) =>NotificationDetailsScreen(notificationDetailsData: state.dataInfo, foreignId: foreignId, notificationId: notificationId, parentId: parentId),));
           }
       },
       child: GestureDetector(

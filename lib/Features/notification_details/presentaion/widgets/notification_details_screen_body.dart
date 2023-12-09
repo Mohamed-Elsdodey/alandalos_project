@@ -1,5 +1,4 @@
 import 'package:alandalos_project/Core/utils/helper.dart';
-import 'package:alandalos_project/Features/message_details/presentaion/message_details_screen.dart';
 import 'package:alandalos_project/Features/notification_details/model/notificationDetailsModel.dart';
 import 'package:alandalos_project/Features/notification_details/presentaion/manager/exams_details_cubit.dart';
 import 'package:alandalos_project/Features/notification_details/presentaion/manager/exams_details_state.dart';
@@ -7,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Core/utils/constants.dart';
 import '../../../../core/utils/assets.dart';
+import '../../../absence_details/presentaion/absence_screen.dart';
+import '../../../exams_details/presentaion/exams_screen.dart';
 import '../../../home/presentation/widgets/custom_home_container.dart';
+import '../../../review_details/presentaion/review_details_screen.dart';
+import '../notification_details_screen.dart';
 
 class NotificationDetailsScreenBody extends StatelessWidget {
   const NotificationDetailsScreenBody({
@@ -55,8 +58,26 @@ class NotificationDetailsScreenBody extends StatelessWidget {
           listener: (context, state) {
             if(state is FeaturedRepositorySuccessNotificationDetails){
 
-          Navigator.push(context, MaterialPageRoute(builder: (context) => MessageDetailsScreen(title: "title", text: "text", date: "date"),));
-            }
+              if(state.dataInfo.data!.type == "review"){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ReviewsDetailsScreen(date: "",balance: "",points: "",rankClass: "2",status: "",subject: "",teacherName: "",totalPoints: "12"),));
+              }
+              else if(state.dataInfo.data!.type == "exam"){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ExamsDetailsScreen(
+                  teacherName: "", totalDegree: "",degreeStudent: "",
+                  subjectStudent: '',),));
+
+              }
+              else if(state.dataInfo.data!.type == "message"){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationDetailsScreen(notificationDetailsData: state.dataInfo,parentId: parentId,notificationId: notificationId,foreignId: foreignId),));
+
+              }
+              else if (state.dataInfo.data!.type == "absence"){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AbsenceScreenDetails(absenceId: "",status: "status",date: "",numberOfAbsence: "",numberOfDelay: "",),));
+
+              }
+              else {
+
+              }            }
           },
           child: GestureDetector(
             onTap: (){
