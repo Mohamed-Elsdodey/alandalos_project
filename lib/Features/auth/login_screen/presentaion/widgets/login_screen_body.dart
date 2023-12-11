@@ -43,7 +43,6 @@ class LoginScreenBody extends StatelessWidget {
             ),
             Gaps.vGap15,
             CustomLoginTextField(
-
               textLabel: "password",
               controller: passWordController,
               stringInTextField: "***********",

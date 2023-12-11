@@ -11,6 +11,7 @@ class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key, required this.dataNotification, required this.parentId});
 final NotificationModel dataNotification;
 final String parentId;
+
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
@@ -84,7 +85,8 @@ final String parentId;
               ),
               SizedBox(height: context.screenHeight *0.01,),
 
-               NotificationListBodyWidget(dataNotification: dataNotification,parentId: parentId,)
+               NotificationListBodyWidget(
+                 dataNotification: dataNotification,parentId: parentId,)
             ],
         ),
       ),

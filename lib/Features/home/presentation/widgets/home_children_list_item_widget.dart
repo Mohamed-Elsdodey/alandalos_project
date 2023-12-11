@@ -1,3 +1,4 @@
+import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
 import 'package:alandalos_project/core/utils/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,10 +6,25 @@ import '../../../child_profile/presentaion/widgets/child_profile_screen_body.dar
 import 'custom_home_container.dart';
 
 class HomeChildrenListItemWidget extends StatelessWidget {
-  const HomeChildrenListItemWidget({super.key, required this.color, required this.nameStudent, required this.classStudent, required this.rankSchool, required this.rankLine, required this.rankClass, required this.imageStudent, required this.parentId});
+  const HomeChildrenListItemWidget(
+      {super.key,
+      required this.color,
+      required this.nameStudent,
+      required this.classStudent,
+      required this.rankSchool,
+      required this.rankLine,
+      required this.rankClass,
+      required this.imageStudent,
+      required this.parentId});
   final Color color;
- final String nameStudent;
- final String classStudent,rankSchool,rankLine,rankClass,imageStudent,parentId;
+  final String classStudent,
+      rankSchool,
+      rankLine,
+      rankClass,
+      imageStudent,
+      parentId,
+
+      nameStudent;
 
 
   @override
@@ -18,7 +34,11 @@ class HomeChildrenListItemWidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  ChildProfileScreenBody(parentId: parentId,classStudent: classStudent,namStudent: nameStudent),
+              builder: (context) => ChildProfileScreenBody(
+
+                  parentId: parentId,
+                  classStudent: classStudent,
+                  namStudent: nameStudent),
             ));
       },
       child: Padding(
@@ -33,10 +53,7 @@ class HomeChildrenListItemWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: context.screenHeight * .05,
-
-                backgroundImage:  NetworkImage(
-
-                    imageStudent),
+                backgroundImage: NetworkImage(imageStudent),
               ),
               SizedBox(
                 height: context.screenHeight * 0.01,
@@ -79,7 +96,6 @@ class HomeChildrenListItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-
                 ],
               ),
               SizedBox(
@@ -104,7 +120,6 @@ class HomeChildrenListItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-
                 ],
               ),
               SizedBox(
@@ -129,7 +144,6 @@ class HomeChildrenListItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-
                 ],
               ),
             ],

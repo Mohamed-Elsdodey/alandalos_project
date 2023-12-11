@@ -22,7 +22,6 @@ final MessageModel data;
       itemBuilder: (context, index) {
         return  MessagesListItemWidget(
           text: data.data![index].text.toString(),
-
           date: data.data![index].date.toString(),title: data.data![index].title.toString(),);
       },
     );

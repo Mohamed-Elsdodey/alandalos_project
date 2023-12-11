@@ -6,9 +6,11 @@ import '../../../../core/utils/constants.dart';
 import 'notification_item.dart';
 
 class NotificationListBodyWidget extends StatelessWidget {
-  const NotificationListBodyWidget({super.key, required this.dataNotification, required this.parentId, });
+  const NotificationListBodyWidget({super.key, required this.dataNotification, required this.parentId });
   final NotificationModel dataNotification;
   final String parentId;
+
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -25,8 +27,11 @@ class NotificationListBodyWidget extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemCount: dataNotification.data!.length,
             itemBuilder: (context, index) {
-              return  NotificationItemWidget(hasBorder: index != 5,
+              return  NotificationItemWidget(
+
+                hasBorder: index != 5,
                 parentId: parentId,
+                type: dataNotification.data![index].type.toString(),
                 foreignId: dataNotification.data![index].foreignId.toString(),
                 notificationId: dataNotification.data![index].id.toString(),
                 date: dataNotification.data![index].date.toString(),

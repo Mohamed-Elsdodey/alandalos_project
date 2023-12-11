@@ -4,7 +4,7 @@ class GetAbsence {
   Future<AbsenceModel> getAbsenceData(String parentId) async {
     Map<String,dynamic> data = await ApiServiceHttp().get(
       uri: 'https://alandalosschool.com/api/student/getAbsences?student_id=$parentId',);
-    print('the data from data services from Absence Details : $data');
+    print('the data from data services from Absence  : $data');
     return  AbsenceModel.fromJson(data);
 
 

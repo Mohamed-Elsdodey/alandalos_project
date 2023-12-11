@@ -6,6 +6,7 @@ import 'absence_state.dart';
 class GetAbsenceCubit extends Cubit<GetAbsenceState> {
   GetAbsenceCubit(this.getAbsence) : super(GetAbsenceInitial());
   final GetAbsence getAbsence;
+
   Future<void> getAllDataAbsence(String parentId) async {
     AbsenceModel data;
     data = await getAbsence.getAbsenceData(parentId);

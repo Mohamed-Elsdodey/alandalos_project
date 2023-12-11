@@ -6,7 +6,7 @@ import 'package:alandalos_project/Features/auth/login_screen/presentaion/manager
 import 'package:alandalos_project/Features/exam_tab/presentaion/manager/exam_details_cubit.dart';
 import 'package:alandalos_project/Features/messages/presentation/manager/message_cubit.dart';
 import 'package:alandalos_project/Features/notification_details/data-source/data-source.dart';
-import 'package:alandalos_project/Features/notification_details/presentaion/manager/exams_details_cubit.dart';
+import 'package:alandalos_project/Features/notification_details/presentaion/manager/notifications_details_cubit.dart';
 import 'package:alandalos_project/Features/notifications/presentation/manager/notification_cubit.dart';
 import 'package:alandalos_project/Features/review_details/data-source/data-source.dart';
 import 'package:alandalos_project/Features/review_details/presentaion/manager/reviews_details_cubit.dart';

@@ -1,11 +1,6 @@
 import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
-import 'package:alandalos_project/Features/absence_details/model/absenceDetailsModel.dart';
-import 'package:alandalos_project/Features/absence_details/presentaion/absence_screen.dart';
-import 'package:alandalos_project/Features/absence_details/presentaion/manager/absence_details_cubit.dart';
-import 'package:alandalos_project/Features/absence_details/presentaion/manager/absence_details_state.dart';
 import 'package:alandalos_project/core/utils/helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/constants.dart';
 import 'absences_List_widgets.dart';

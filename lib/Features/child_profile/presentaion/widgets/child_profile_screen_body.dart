@@ -1,4 +1,5 @@
 import 'package:alandalos_project/Core/utils/helper.dart';
+import 'package:alandalos_project/Features/Absences_tab/model/absence_model.dart';
 import 'package:alandalos_project/Features/Absences_tab/presentaion/manager/absence_cubit.dart';
 import 'package:alandalos_project/Features/Absences_tab/presentaion/manager/absence_state.dart';
 import 'package:alandalos_project/Features/exam_tab/presentaion/exam_tab.dart';
@@ -27,6 +28,8 @@ class ChildProfileScreenBody extends StatefulWidget {
       required this.namStudent,
       required this.classStudent});
   final String parentId, namStudent, classStudent;
+
+
   @override
   State<ChildProfileScreenBody> createState() => _ChildProfileScreenBodyState();
 }
@@ -79,6 +82,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>  NotificationsScreen(
+
                         parentId: widget.parentId,
                         dataNotification: state.dataInfo),
                   ));
@@ -226,6 +230,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => AbsencesTabScreen(
+
                               data: state.dataInfo, parentId: widget.parentId),
                         ));
                   } else if (state is FeaturedRepositoryFailureAbsence) {
@@ -262,7 +267,7 @@ class _ChildProfileScreenBodyState extends State<ChildProfileScreenBody> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              MessagesScreen(data: state.dataInfo),
+                              MessagesScreen(data: state.dataInfo ),
                         ));
                   } else if (state is FeaturedRepositoryFailureMessages) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

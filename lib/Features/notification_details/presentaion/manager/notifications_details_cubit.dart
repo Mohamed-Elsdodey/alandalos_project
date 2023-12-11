@@ -1,7 +1,7 @@
 import 'package:alandalos_project/Features/notification_details/data-source/data-source.dart';
 import 'package:bloc/bloc.dart';
 import '../../model/notificationDetailsModel.dart';
-import 'exams_details_state.dart';
+import 'notifications_details_state.dart';
 
 class GetNotificationDetailsCubit extends Cubit<GetNotificationDetailsState> {
   GetNotificationDetailsCubit(this.getNotificationDetails) : super(GetNotificationDetailsInitial());
